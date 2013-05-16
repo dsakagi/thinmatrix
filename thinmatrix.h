@@ -76,17 +76,6 @@ public:
 		std::copy(_data, _data+(rows*cols), data);
 	}
 
-	template <typename Container_t>
-	ThinMatrix(size_t rows, size_t cols, const Container_t & _data) :
-		rows(rows), cols(cols), data(NULL)
-	{
-		if (_data.size() != (rows * cols)) {
-			throw std::invalid_argument("Provided vector has incorrect number of data");
-		}
-		data = new T[rows*cols];
-		std::copy(_data.begin(), _data.end(), this->data);
-	}
-
 	~ThinMatrix() {
 		if (data)
 			delete[] data;
